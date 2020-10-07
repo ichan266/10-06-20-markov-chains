@@ -72,7 +72,6 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-    print(list(chains.keys()))
     # print(type(list(chains.keys())))
     random_key = choice(list(chains.keys()))
     words.append(random_key[0])
@@ -90,8 +89,6 @@ def make_text(chains):
         new_value = choice(chains[new_key])
         words.append(new_value)
         new_key = (words[-2], words[-1])
-        print("new_value is", new_value)
-        print("new_key is", new_key)
     #If your new key is in the dictionary:
         #continue adding words.
 
