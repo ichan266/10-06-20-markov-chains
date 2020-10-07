@@ -44,6 +44,7 @@ def make_chains(text_string):
 
     words = text_string.split() 
 
+
     for word in range(len(words)-2):
         keys = (words[word], words[word + 1])
         # print('keys =' , keys)
