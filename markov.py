@@ -68,25 +68,35 @@ def make_chains(text_string):
     return chains
 
 
-# def make_text(chains):
-#     """Return text from chains."""
+def make_text(chains):
+    """Return text from chains."""
 
-#     words = []
+    words = []
+    print(list(chains.keys()))
+    # print(type(list(chains.keys())))
+    random_key = choice(list(chains.keys()))
+    print(random_key)
+    #Select a random key from chains as a starting point.
+    #Append the first item from random_key (tuple) to words.
+    #Append the second item from random_key (tuple) to words.
+    #Randomly select a Value from the dictionary that is paired with random_key.
+    #Append this Value to the end of words.
+    #Look at the last two indexes in words; this is your new key.
+    #If your new key is in the dictionary:
+        #continue adding words.
 
-#     # your code goes here
-
-#     return ' '.join(words)
+    return ' '.join(words)
 
 
-# input_path = 'green-eggs.txt'
+input_path = 'green-eggs.txt'
 
-# # Open the file and turn it into one long string
-# input_text = open_and_read_file(input_path)
+# Open the file and turn it into one long string
+input_text = open_and_read_file(input_path)
 
-# # Get a Markov chain
-# chains = make_chains(input_text)
+# Get a Markov chain
+chains = make_chains(input_text)
 
-# # Produce random text
-# random_text = make_text(chains)
+# Produce random text
+random_text = make_text(chains)
 
-# print(random_text)
+print(random_text)
