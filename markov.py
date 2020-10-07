@@ -63,7 +63,6 @@ def make_chains(text_string):
             chains[keys].append(words[word + 2])
                 # add word[2] (i.e. mary) in to the list of chains[("hi", "there")]
 
-
         #how to loop to avoid index error?
         
     return chains
@@ -76,13 +75,23 @@ def make_text(chains):
     print(list(chains.keys()))
     # print(type(list(chains.keys())))
     random_key = choice(list(chains.keys()))
-    print(random_key)
+    words.append(random_key[0])
+    words.append(random_key[1])    
     #Select a random key from chains as a starting point.
     #Append the first item from random_key (tuple) to words.
     #Append the second item from random_key (tuple) to words.
+    new_value_from_random_key = choice(chains[random_key])
     #Randomly select a Value from the dictionary that is paired with random_key.
+    words.append(new_value_from_random_key)
     #Append this Value to the end of words.
+    new_key = (words[-2], words[-1])
     #Look at the last two indexes in words; this is your new key.
+    while new_key in chains:
+        new_value = choice(chains[new_key])
+        words.append(new_value)
+        new_key = (words[-2], words[-1])
+        print("new_value is", new_value)
+        print("new_key is", new_key)
     #If your new key is in the dictionary:
         #continue adding words.
 
