@@ -3,6 +3,7 @@
 from random import choice
 
 import os
+
 import discord
 
 def open_and_read_file(file_path):
