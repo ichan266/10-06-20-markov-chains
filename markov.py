@@ -2,6 +2,8 @@
 
 from random import choice
 
+import os
+import discord
 
 def open_and_read_file(file_path):
     """Take file path as string; return text as string.
@@ -106,4 +108,28 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-print(random_text)
+#print(random_text)
+
+
+
+# Using robot to reply message on Discord
+
+client = discord.Client()
+# Create instance of a Client. This client is the connection to Discord
+
+@client.event # it is a decorator to register an event (in a "callback style")
+
+async def on_ready():  # on_ready() event is called when the bot has finished logging in & setting things up
+    print(f'Successfully connected! Logged in as {client.user}.')
+
+
+@client.event
+async def on_message(message):  #on_message() event is called when the bot has received a message
+    if message.author == client.user:  #  ignore message from ourselves (bot)
+        return
+    print(f"channel type is {str(type(message.channel))}, {message.content}")
+    print(f"text channel is {message.channel.name}")
+    if type(message.channel) == discord.channel.DMChannel:
+        await message.channel.send(make_text(chains))
+
+client.run(os.environ['DISCORD_TOKEN'])
